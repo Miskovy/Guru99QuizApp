@@ -3,18 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-
+import Controller.Operations;
 /**
  *
  * @author El3atty
  */
 public class ThePanel extends javax.swing.JFrame {
-
+    Operations opr = new Operations();
     /**
      * Creates new form ThePanel
      */
     public ThePanel() {
         initComponents();
+        set();
     }
 
     /**
@@ -26,9 +27,8 @@ public class ThePanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        NextBtn = new javax.swing.JButton();
+        label = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -36,11 +36,14 @@ public class ThePanel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Next");
+        NextBtn.setText("Next");
+        NextBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NextBtnActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("Que1:");
-
-        jLabel2.setText("Which one among these is not a datatype?");
+        label.setText("Que1:");
 
         jRadioButton1.setText("int");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -67,34 +70,26 @@ public class ThePanel extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(57, 57, 57)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton1)
-                                    .addComponent(jRadioButton2))
-                                .addGap(17, 17, 17))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jRadioButton4)
-                                .addComponent(jRadioButton3))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButton4)
+                            .addComponent(jRadioButton3)
+                            .addComponent(jRadioButton2)
+                            .addComponent(jRadioButton1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jButton1)))
-                .addContainerGap(238, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
+                        .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(NextBtn)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                .addComponent(label)
+                .addGap(43, 43, 43)
                 .addComponent(jRadioButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jRadioButton2)
@@ -102,21 +97,30 @@ public class ThePanel extends javax.swing.JFrame {
                 .addComponent(jRadioButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jRadioButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(80, 80, 80))
+                .addGap(45, 45, 45)
+                .addComponent(NextBtn)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
+
+        label.getAccessibleContext().setAccessibleName("label");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void NextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+        opr.count = opr.count + 1;
+        opr.current++;
+        set();
+    }//GEN-LAST:event_NextBtnActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,7 +148,6 @@ public class ThePanel extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ThePanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -152,14 +155,67 @@ public class ThePanel extends javax.swing.JFrame {
             }
         });
     }
+    void set()
+	{
+		
+		if(opr.current==0)
+		{
+			label.setText("Que1: Which one among these is not a datatype");
+			jRadioButton1.setText("int");jRadioButton2.setText("Float");jRadioButton3.setText("boolean");jRadioButton4.setText("char");	
+		}
+		if(opr.current==1)
+		{
+			label.setText("Que2: Which class is available to all the class automatically");
+			jRadioButton1.setText("Swing");jRadioButton2.setText("Applet");jRadioButton3.setText("Object");jRadioButton4.setText("ActionEvent");
+		}
+		if(opr.current==2)
+		{
+			label.setText("Que3: Which package is directly available to our class without importing it");
+			jRadioButton1.setText("swing");jRadioButton2.setText("applet");jRadioButton3.setText("net");jRadioButton4.setText("lang");
+		}
+		if(opr.current==3)
+		{
+			label.setText("Que4: String class is defined in which package");
+			jRadioButton1.setText("lang");jRadioButton2.setText("Swing");jRadioButton3.setText("Applet");jRadioButton4.setText("awt");
+		}
+		if(opr.current==4)
+		{
+			label.setText("Que5: Which institute is best for java coaching");
+			jRadioButton1.setText("Guru99");jRadioButton2.setText("ABC");jRadioButton3.setText("XYZ");jRadioButton4.setText("123");
+		}
+		if(opr.current==5)
+		{
+			label.setText("Que6: Which one among these is not a keyword");
+			jRadioButton1.setText("class");jRadioButton2.setText("int");jRadioButton3.setText("get");jRadioButton4.setText("if");
+		}
+		if(opr.current==6)
+		{
+			label.setText("Que7: Which one among these is not a class ");
+			jRadioButton1.setText("Swing");jRadioButton2.setText("Actionperformed");jRadioButton3.setText("ActionEvent");jRadioButton4.setText("Button");
+		}
+		if(opr.current==7)
+		{
+			label.setText("Que8: which one among these is not a function of Object class");
+			jRadioButton1.setText("toString");jRadioButton2.setText("finalize");jRadioButton3.setText("equals");jRadioButton4.setText("getDocumentBase");		
+		}
+		if(opr.current==8)
+		{
+			label.setText("Que9: which function is not present in Applet class");
+			jRadioButton1.setText("init");jRadioButton2.setText("main");jRadioButton3.setText("start");jRadioButton4.setText("destroy");
+		}
+		if(opr.current==9)
+		{
+			label.setText("Que10: Which one among these is not a valid component");
+			jRadioButton1.setText("JButton");jRadioButton2.setText("JList");jRadioButton3.setText("JButtonGroup");jRadioButton4.setText("JTextArea");
+		}
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JButton NextBtn;
+    public javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
+    public javax.swing.JLabel label;
     // End of variables declaration//GEN-END:variables
 }
