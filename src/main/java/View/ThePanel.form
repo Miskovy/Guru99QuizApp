@@ -39,8 +39,10 @@
                       <Component id="label" min="-2" pref="439" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
                       <Component id="NextBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      <Component id="ResultsBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="60" max="32767" attributes="0"/>
@@ -61,7 +63,10 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jRadioButton4" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-              <Component id="NextBtn" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="NextBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ResultsBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="51" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -116,6 +121,16 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="char"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="ResultsBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Results"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ResultsBtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

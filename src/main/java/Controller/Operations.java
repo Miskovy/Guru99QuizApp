@@ -15,7 +15,4 @@ public class Operations {
    public int x = 1;
    public int y= 1;
    public int m[]=new int[10];
-   public void set(){
-   
-   }
 }

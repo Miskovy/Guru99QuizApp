@@ -4,6 +4,8 @@
  */
 package View;
 import Controller.Operations;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 /**
  *
  * @author El3atty
@@ -16,6 +18,11 @@ public class ThePanel extends javax.swing.JFrame {
     public ThePanel() {
         initComponents();
         set();
+        bg = new ButtonGroup();
+        bg.add(jRadioButton1);
+        bg.add(jRadioButton2);
+        bg.add(jRadioButton3);
+        bg.add(jRadioButton4);
     }
 
     /**
@@ -33,6 +40,7 @@ public class ThePanel extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
+        ResultsBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +71,15 @@ public class ThePanel extends javax.swing.JFrame {
 
         jRadioButton4.setText("char");
 
+        ResultsBtn.setText("Results");
+        ResultsBtn.setToolTipText("");
+        ResultsBtn.setEnabled(false);
+        ResultsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResultsBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,8 +97,10 @@ public class ThePanel extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(NextBtn)))
+                        .addGap(140, 140, 140)
+                        .addComponent(NextBtn)
+                        .addGap(66, 66, 66)
+                        .addComponent(ResultsBtn)))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -98,7 +117,9 @@ public class ThePanel extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jRadioButton4)
                 .addGap(45, 45, 45)
-                .addComponent(NextBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NextBtn)
+                    .addComponent(ResultsBtn))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
@@ -108,10 +129,20 @@ public class ThePanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void NextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextBtnActionPerformed
-        // TODO add your handling code here:
-        opr.count = opr.count + 1;
-        opr.current++;
-        set();
+			// Check the current answer. If correct answer is selected increment count
+		    if(check()) {opr.count=opr.count+1;}
+		    //System.out.println(count);
+			opr.current++;
+			
+			//update the Questions
+			set();	
+			
+			// If last Question. Enable the Results button
+			if(opr.current==9)
+			{
+				NextBtn.setEnabled(false);
+				ResultsBtn.setEnabled(true);
+			}
     }//GEN-LAST:event_NextBtnActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -121,6 +152,14 @@ public class ThePanel extends javax.swing.JFrame {
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void ResultsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultsBtnActionPerformed
+        // TODO add your handling code here:
+			
+			// Show the number of correct answers
+			JOptionPane.showMessageDialog(this,"Correct Answers = "+opr.count);
+			System.exit(0);
+    }//GEN-LAST:event_ResultsBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,13 +248,39 @@ public class ThePanel extends javax.swing.JFrame {
 			jRadioButton1.setText("JButton");jRadioButton2.setText("JList");jRadioButton3.setText("JButtonGroup");jRadioButton4.setText("JTextArea");
 		}
         }
+    boolean check()
+	{
+		if(opr.current==0)
+			return(jRadioButton2.isSelected());
+		if(opr.current==1)
+			return(jRadioButton3.isSelected());
+		if(opr.current==2)
+			return(jRadioButton4.isSelected());
+		if(opr.current==3)
+			return(jRadioButton1.isSelected());
+		if(opr.current==4)
+			return(jRadioButton3.isSelected());
+		if(opr.current==5)
+			return(jRadioButton3.isSelected());
+		if(opr.current==6)
+			return(jRadioButton2.isSelected());
+		if(opr.current==7)
+			return(jRadioButton4.isSelected());
+		if(opr.current==8)
+			return(jRadioButton2.isSelected());
+		if(opr.current==9)
+			return(jRadioButton3.isSelected());
+		return false;
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton NextBtn;
+    private javax.swing.JButton ResultsBtn;
     public javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     public javax.swing.JLabel label;
     // End of variables declaration//GEN-END:variables
+    public javax.swing.ButtonGroup bg;
 }
